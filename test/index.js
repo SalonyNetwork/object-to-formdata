@@ -210,7 +210,11 @@ test('empty Array', t => {
     foo: []
   })
 
-  t.true(formData.append.notCalled)
+  t.true(formData.append.calledOnce)
+  t.deepEqual(formData.append.getCall(0).args, [
+    'foo[]',
+    ''
+  ])
 })
 
 test('Array in Array', t => {
